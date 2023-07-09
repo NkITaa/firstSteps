@@ -5,18 +5,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarsComponent } from './cars/cars.component';
+import { CarsTableComponent } from './cars/cars-table/cars-table.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CarsComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    NgbModule
-  ],
+  declarations: [AppComponent, CarsComponent, CarsTableComponent],
+  imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
