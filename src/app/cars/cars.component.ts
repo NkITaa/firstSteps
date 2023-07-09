@@ -16,4 +16,8 @@ export class CarsComponent implements OnInit {
       { brand: 'Porsche', model: '991' },
     ];
   }
+
+  currentCar(car: Car) {
+    console.log(car);
+  }
 }

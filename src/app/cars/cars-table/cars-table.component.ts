@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Car } from '../cars';
 
 @Component({
@@ -9,5 +9,11 @@ import { Car } from '../cars';
 export class CarsTableComponent implements OnInit {
   @Input() cars: Car[] = [];
 
+  @Output() selectedCar = new EventEmitter<Car>();
+
   ngOnInit(): void {}
+
+  selectCar(car: Car) {
+    this.selectedCar.emit(car);
+  }
 }

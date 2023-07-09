@@ -1,3 +1,6 @@
 <p>cars works!</p>
 
-<app-cars-table [cars]="cars"></app-cars-table>
+<app-cars-table
+  [cars]="cars"
+  (selectedCar)="currentCar($event)"
+></app-cars-table>
