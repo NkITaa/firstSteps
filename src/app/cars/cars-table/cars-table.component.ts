@@ -8,7 +8,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { Car } from '../cars';
+import { Room } from '../cars';
 
 @Component({
   selector: 'app-cars-table',
@@ -17,9 +17,9 @@ import { Car } from '../cars';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarsTableComponent implements OnInit, OnChanges {
-  @Input() cars: Car[] = [];
+  @Input() rooms: Room[] = [];
 
-  @Output() selectedCar = new EventEmitter<Car>();
+  @Output() selectedRoom = new EventEmitter<Room>();
 
   ngOnInit(): void {}
 
@@ -27,7 +27,7 @@ export class CarsTableComponent implements OnInit, OnChanges {
     console.log(changes);
   }
 
-  selectCar(car: Car) {
-    this.selectedCar.emit(car);
+  selectRoom(room: Room) {
+    this.selectedRoom.emit(room);
   }
 }

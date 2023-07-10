@@ -1,5 +1,4 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { Car } from './cars/cars';
 import { LocalStorageToken } from './localstorage.token';
 
 @Component({

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from './cars';
+import { Room } from './cars';
 import { CarsService } from './services/cars.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-cars',
@@ -8,22 +9,73 @@ import { CarsService } from './services/cars.service';
   styleUrls: ['./cars.component.scss'],
 })
 export class CarsComponent implements OnInit {
-  cars: Car[] = [];
+  rooms: Room[] = [];
 
-  selectedCar!: Car;
+  selectedRoom!: Room;
 
-  constructor(private carsService: CarsService) {}
+  stream = new Observable<string>((observer) => {
+    observer.next('user1');
+    observer.next('user2');
+    observer.next('user3');
+    observer.next('user4');
+    observer.complete();
+  });
+
+  constructor(private roomService: CarsService) {}
 
   ngOnInit(): void {
-    this.cars = this.carsService.getCars();
+    this.roomService.getRooms().subscribe((rooms) => {
+      this.rooms = rooms;
+    });
+    this.roomService.getRooms().subscribe({
+      next: (value) => console.log(value),
+      complete: () => console.log('complete'),
+      error: () => console.log('error'),
+    });
+    this.stream.subscribe((data) => {
+      console.log(data);
+    });
   }
 
-  currentCar(car: Car) {
-    this.selectedCar = car;
+  currentRoom(room: Room) {
+    this.selectedRoom = room;
   }
 
-  addCar() {
-    const car: Car = { brand: 'Audi', model: 'RS6' };
-    this.cars = [...this.cars, car];
+  editRoom() {
+    const room: Room = {
+      roomNumber: '3',
+      roomType: 'Medium',
+      amenities: 'bib',
+      price: 500,
+      photos: 'ups',
+      checkinTime: new Date('11-Nov-2021'),
+      checkoutTime: new Date('12-Nov-2021'),
+      rating: 4.6,
+    };
+    this.roomService.editRoom(room).subscribe((data) => {
+      this.rooms = data;
+    });
+  }
+
+  addRoom() {
+    const room: Room = {
+      roomNumber: '7',
+      roomType: 'Medium',
+      amenities: 'Bla',
+      price: 500,
+      photos: 'ups',
+      checkinTime: new Date('11-Nov-2021'),
+      checkoutTime: new Date('12-Nov-2021'),
+      rating: 4.6,
+    };
+    this.roomService.addRoom(room).subscribe((data) => {
+      this.rooms = data;
+    });
+  }
+
+  deleteRoom() {
+    this.roomService.deleteRoom('3').subscribe((data) => {
+      this.rooms = data;
+    });
   }
 }

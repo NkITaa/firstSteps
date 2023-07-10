@@ -68,7 +68,8 @@
               "browserTarget": "firstSteps:build:production"
             },
             "development": {
-              "browserTarget": "firstSteps:build:development"
+              "browserTarget": "firstSteps:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

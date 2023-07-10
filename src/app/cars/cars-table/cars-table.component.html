@@ -1,15 +1,15 @@
 <p>cars-table works!</p>
 
-<div *ngFor="let car of cars">
+<div *ngFor="let room of rooms">
   <table>
     <th>
-      {{ car.brand }}
+      {{ room.amenities }}
     </th>
     <th>
-      {{ car.model }}
+      {{ room.checkinTime }}
     </th>
     <th>
-      <button class="btn btn-primary" (click)="selectCar(car)">
+      <button class="btn btn-primary" (click)="selectRoom(room)">
         Select Car
       </button>
     </th>
