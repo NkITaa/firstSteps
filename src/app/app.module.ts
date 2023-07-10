@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarsComponent } from './cars/cars.component';
 import { CarsTableComponent } from './cars/cars-table/cars-table.component';
+import { ContainerComponent } from './container/container.component';
 
 @NgModule({
-  declarations: [AppComponent, CarsComponent, CarsTableComponent],
+  declarations: [AppComponent, CarsComponent, CarsTableComponent, ContainerComponent],
   imports: [BrowserModule, AppRoutingModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],

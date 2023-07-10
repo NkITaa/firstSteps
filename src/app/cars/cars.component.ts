@@ -9,6 +9,8 @@ import { Car } from './cars';
 export class CarsComponent implements OnInit {
   cars: Car[] = [];
 
+  selectedCar!: Car;
+
   ngOnInit(): void {
     this.cars = [
       { brand: 'Porsche', model: '991' },
@@ -18,6 +20,11 @@ export class CarsComponent implements OnInit {
   }
 
   currentCar(car: Car) {
-    console.log(car);
+    this.selectedCar = car;
+  }
+
+  addCar() {
+    const car: Car = { brand: 'Audi', model: 'RS6' };
+    this.cars = [...this.cars, car];
   }
 }

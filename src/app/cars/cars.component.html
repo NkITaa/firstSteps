@@ -1,5 +1,13 @@
 <p>cars works!</p>
 
+<div *ngIf="selectedCar">
+  {{ selectedCar | json }}
+</div>
+
+<div>
+  <button (click)="addCar()">add Car</button>
+</div>
+
 <app-cars-table
   [cars]="cars"
   (selectedCar)="currentCar($event)"
