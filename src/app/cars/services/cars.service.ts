@@ -1,5 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Car } from '../cars';
+import { APP_SERVICE_CONFIG } from '../../app_config/appconfig.service';
+import { AppConfig } from '../../app_config/appconfig.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -15,5 +17,7 @@ export class CarsService {
     return this.cars;
   }
 
-  constructor() {}
+  constructor(@Inject(APP_SERVICE_CONFIG) private config: AppConfig) {
+    console.log(config.apiEndpoint);
+  }
 }

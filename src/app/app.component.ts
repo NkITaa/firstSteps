@@ -1,9 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Car } from './cars/cars';
+import { LocalStorageToken } from './localstorage.token';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  constructor(@Inject(LocalStorageToken) private localStorage: Storage) {}
+
+  ngOnInit(): void {
+    this.localStorage.setItem('name', 'Nikita');
+  }
+}
