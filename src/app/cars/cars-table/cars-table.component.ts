@@ -17,7 +17,7 @@ import { Room } from '../cars';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CarsTableComponent implements OnInit, OnChanges {
-  @Input() rooms: Room[] = [];
+  @Input() rooms: Room[] | null = [];
 
   @Output() selectedRoom = new EventEmitter<Room>();
 

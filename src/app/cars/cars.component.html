@@ -4,13 +4,18 @@
   {{ selectedRoom | json }}
 </div>
 
+<!-- handles unsubscribing to stream all on itself  -->
+<!-- {{ rooms$ | async | json }} -->
+
 <div>
   <button (click)="addRoom()">add Room</button>
 </div>
 <button (click)="editRoom()">edit Room</button>
 <button (click)="deleteRoom()">delete Room</button>
+<button (click)="getPhotos()">get Fotos</button>
+<h1>{{ totalBytes }}</h1>
 
 <app-cars-table
-  [rooms]="rooms"
+  [rooms]="rooms$ | async"
   (selectedRoom)="currentRoom($event)"
 ></app-cars-table>
