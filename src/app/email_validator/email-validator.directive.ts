@@ -18,9 +18,7 @@ import {
 })
 export class EmailValidatorDirective implements Validator {
   validate(control: AbstractControl): ValidationErrors | null {
-    const value = control.value as string;
-
-    if (value.includes('test')) {
+    if (control.value?.includes('test')) {
       return {
         invalidEmail: true,
       };
