@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +10,12 @@ import { CarsTableComponent } from './cars/cars-table/cars-table.component';
 import { ContainerComponent } from './container/container.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './app_config/appconfig.service';
+import { RequestInterceptor } from './request.interceptor';
+import { InitService } from './init.service';
+
+function initFactory(initService: InitService) {
+  return () => initService.init();
+}
 
 @NgModule({
   declarations: [
@@ -24,6 +30,17 @@ import { APP_CONFIG, APP_SERVICE_CONFIG } from './app_config/appconfig.service';
     {
       provide: APP_SERVICE_CONFIG,
       useValue: APP_CONFIG,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initFactory,
+      deps: [InitService],
+      multi: true,
     },
   ],
   bootstrap: [AppComponent],

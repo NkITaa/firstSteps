@@ -11,12 +11,10 @@ import { shareReplay } from 'rxjs';
 export class CarsService {
   rooms: Room[] = [];
 
-  headers = new HttpHeaders({ token: 'blalalala' });
+  /*   headers = new HttpHeaders({ token: 'blalalala' }); */
 
   // this is better as get Rooms method, because data gets cashed and unecessary requests are not made
-  getRooms$ = this.http
-    .get<Room[]>('api/rooms', { headers: this.headers })
-    .pipe(shareReplay(1));
+  getRooms$ = this.http.get<Room[]>('api/rooms').pipe(shareReplay(1));
 
   getRooms() {
     // can do this because of the proxy config in the angular.json file
