@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,9 +11,14 @@ export class LoginComponent {
 
   password: string = '';
 
+  constructor(private route: Router) {}
+
   login() {
     if (this.email === 'admin@gmail.com' && this.password === '123') {
-      alert('login successful');
+      /* 
+      this.route.navigate(['/rooms', 'add']); */
+
+      this.route.navigateByUrl('/rooms/add');
     }
   }
 }

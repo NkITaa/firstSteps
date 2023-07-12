@@ -1,20 +1,22 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmployeesComponent } from './employees/employees.component';
-import { CarsComponent } from './cars/cars.component';
-import { ContainerComponent } from './container/container.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { RoomsBookingComponent } from './cars/rooms-booking/rooms-booking.component';
-import { AddRoomsComponent } from './cars/add-rooms/add-rooms.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'employee', component: EmployeesComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'rooms', component: CarsComponent },
-  { path: 'rooms/add', component: AddRoomsComponent },
-  { path: 'rooms/:id', component: RoomsBookingComponent },
-  { path: '', redirectTo: '/rooms', pathMatch: 'full' },
+
+  // whenever someone is accessing rooms the person has to download the room module at run time -> im faster because main.js will be smaller
+  {
+    path: 'rooms',
+    loadChildren: () =>
+      import('./cars/rooms.module').then((m) => m.RoomsModule),
+  },
+
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'booking', loadChildren: () => import('./booking-history/booking-history.module').then(m => m.BookingHistoryModule) },
   { path: '**', component: NotFoundComponent },
 ];
 

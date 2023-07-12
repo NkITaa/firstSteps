@@ -5,8 +5,6 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CarsComponent } from './cars/cars.component';
-import { CarsTableComponent } from './cars/cars-table/cars-table.component';
 import { ContainerComponent } from './container/container.component';
 import { EmployeesComponent } from './employees/employees.component';
 import { APP_CONFIG, APP_SERVICE_CONFIG } from './app_config/appconfig.service';
@@ -20,12 +18,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { RoomsBookingComponent } from './cars/rooms-booking/rooms-booking.component';
-import { AddRoomsComponent } from './cars/add-rooms/add-rooms.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { HoverDirective } from './hover.directive';
 import { EmailValidatorDirective } from './email_validator/email-validator.directive';
+import { RoomsModule } from './cars/rooms.module';
 
 function initFactory(initService: InitService) {
   return () => initService.init();
@@ -34,14 +31,10 @@ function initFactory(initService: InitService) {
 @NgModule({
   declarations: [
     AppComponent,
-    CarsComponent,
-    CarsTableComponent,
     ContainerComponent,
     EmployeesComponent,
     AppNavComponent,
     NotFoundComponent,
-    RoomsBookingComponent,
-    AddRoomsComponent,
     LoginComponent,
     HoverDirective,
     EmailValidatorDirective,

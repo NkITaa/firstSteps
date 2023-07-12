@@ -8,7 +8,9 @@
 <!-- {{ rooms$ | async | json }} -->
 
 <div>
-  <button (click)="addRoom()">add Room</button>
+  <button [routerLink]="['add']" routerLinkActive="router-link-active">
+    add Room
+  </button>
 </div>
 <button (click)="editRoom()">edit Room</button>
 <button (click)="deleteRoom()">delete Room</button>
@@ -19,3 +21,5 @@
   [rooms]="rooms$ | async"
   (selectedRoom)="currentRoom($event)"
 ></app-cars-table>
+<!-- sets position of child element of room router -->
+<router-outlet></router-outlet>
