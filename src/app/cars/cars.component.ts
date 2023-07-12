@@ -3,6 +3,7 @@ import { Room } from './cars';
 import { CarsService } from './services/cars.service';
 import { Observable, Subject, Subscription, catchError, map, of } from 'rxjs';
 import { HttpEventType } from '@angular/common/http';
+import { ConfigService } from '../services/config.service';
 
 @Component({
   selector: 'app-cars',
@@ -40,7 +41,10 @@ export class CarsComponent implements OnInit {
 
   roomsCount$ = this.roomService.getRooms$.pipe(map((rooms) => rooms.length));
 
-  constructor(private roomService: CarsService) {}
+  constructor(
+    private roomService: CarsService,
+    private configService: ConfigService
+  ) {}
 
   ngOnInit(): void {
     /*     this.subscription = this.roomService.getRooms$.subscribe((rooms) => {
