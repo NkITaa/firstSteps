@@ -3,9 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { EmployeesComponent } from './employees/employees.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { LoginComponent } from './login/login.component';
+import { loginGuard } from './guards/login.guard';
 
 const routes: Routes = [
-  { path: 'employee', component: EmployeesComponent },
+  {
+    path: 'employee',
+    component: EmployeesComponent,
+    canActivate: [loginGuard],
+  },
   { path: 'login', component: LoginComponent },
 
   // whenever someone is accessing rooms the person has to download the room module at run time -> im faster because main.js will be smaller
@@ -13,10 +18,18 @@ const routes: Routes = [
     path: 'rooms',
     loadChildren: () =>
       import('./cars/rooms.module').then((m) => m.RoomsModule),
+    canActivate: [loginGuard],
   },
 
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'booking', loadChildren: () => import('./booking-history/booking-history.module').then(m => m.BookingHistoryModule) },
+  {
+    path: 'booking',
+    loadChildren: () =>
+      import('./booking-history/booking-history.module').then(
+        (m) => m.BookingHistoryModule
+      ),
+    canActivate: [loginGuard],
+  },
   { path: '**', component: NotFoundComponent },
 ];
 
