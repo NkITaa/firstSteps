@@ -8,6 +8,7 @@ import { AddRoomsComponent } from './add-rooms/add-rooms.component';
 import { RoomsBookingComponent } from './rooms-booking/rooms-booking.component';
 import { FormsModule } from '@angular/forms';
 import { RouteConfigToken } from '../services/route.config.service';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { RouteConfigToken } from '../services/route.config.service';
     CarsTableComponent,
     AddRoomsComponent,
     RoomsBookingComponent,
+    FilterPipe,
   ],
   imports: [CommonModule, RoomsRoutingModule, FormsModule],
   providers: [

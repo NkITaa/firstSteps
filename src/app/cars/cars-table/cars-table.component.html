@@ -1,6 +1,6 @@
 <p>cars-table works!</p>
 
-<div *ngFor="let room of rooms">
+<div *ngFor="let room of rooms | filter : 700">
   <table>
     <th>
       {{ room.amenities }}
