@@ -1,1 +1,14 @@
 <p>booking-history works!</p>
+
+{{ bookingForm.value | json }}
+
+<!-- here I could all all the controls for the input field -->
+<form [formGroup]="bookingForm"></form>
+
+<button (click)="addGuest()">Add Guests</button>
+
+<button (click)="addPassport()">Add Passport</button>
+
+<button (click)="removePassport()">Delete Passport</button>
+
+<button (click)="removeGuest(0)">Remove Guest</button>
