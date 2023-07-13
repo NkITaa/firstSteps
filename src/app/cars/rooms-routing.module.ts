@@ -3,12 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 import { CarsComponent } from './cars.component';
 import { AddRoomsComponent } from './add-rooms/add-rooms.component';
 import { RoomsBookingComponent } from './rooms-booking/rooms-booking.component';
+import { roomsGuard } from '../guards/rooms.guard';
 
 const routes: Routes = [
   {
     // path is blank because it is default in path in app-routing
     path: '',
     component: CarsComponent,
+    canActivateChild: [roomsGuard],
     children: [
       { path: 'add', component: AddRoomsComponent },
       { path: ':id', component: RoomsBookingComponent },

@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
   isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(private route: Router) {}
 
@@ -16,6 +17,10 @@ export class LoginService {
 
       /* this.route.navigateByUrl('/rooms/add'); */
 
+      this.isLoggedIn = true;
+      this.isAdmin = true;
+    }
+    if (email === 'user@gmail.com' && password === '123') {
       this.isLoggedIn = true;
     }
     return this.isLoggedIn;
